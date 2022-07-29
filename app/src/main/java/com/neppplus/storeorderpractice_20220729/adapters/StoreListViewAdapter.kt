@@ -24,6 +24,10 @@ class StoreListViewAdapter (
 
         val row = tempRow!!
 
+        val data = mList[position]
+
+        row.titleTxt.text = data.title
+        row.scoreRatingBar.rating = data.score.toFloat()
 
         return row
     }
