@@ -1,10 +1,15 @@
 package com.neppplus.storeorderpractice_20220729
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.normal.TedPermission
 import com.neppplus.storeorderpractice_20220729.datas.StoreData
 import kotlinx.android.synthetic.main.activity_store_detail.*
 
@@ -31,9 +36,27 @@ class StoreDetailActivity : AppCompatActivity() {
 
 //        별도의 클릭 이벤트 처리 (전화번호 버튼 클릭 이벤트 처리)
         callBtn.setOnClickListener {
-            val myUri = Uri.parse("tel:${storeData.phoneNum}")
-            val myIntent = Intent( Intent.ACTION_CALL, myUri )
-            startActivity(myIntent)
+
+//            권한이 허가 되었는지 / 아닌지에 "상황"에 따라 별도로 실행될 코드 작성
+            val pl = object : PermissionListener{
+                override fun onPermissionGranted() {
+//                    실제로 권한이 Ok 되었을때 실행할 코드
+                    val myUri = Uri.parse("tel:${storeData.phoneNum}")
+                    val myIntent = Intent( Intent.ACTION_CALL, myUri )
+                    startActivity(myIntent)
+                }
+
+                override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+//                    최종 권한이 거절된 경우 (보통 toast로 안내 처리)
+                    Toast.makeText(this@StoreDetailActivity, "권한이 거절되었습니다.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+//            실제 권한 확인 요청
+            TedPermission.create()
+                .setPermissionListener(pl)  // 만들어둔 PermissionListener 변수
+                .setPermissions(Manifest.permission.CALL_PHONE)  // 우리가 획득하고 싶은 권한
+                .check()
         }
     }
 }
