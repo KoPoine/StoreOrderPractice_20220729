@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.neppplus.storeorderpractice_20220729.R
+import com.neppplus.storeorderpractice_20220729.adapters.StoreListViewAdapter
 import com.neppplus.storeorderpractice_20220729.datas.StoreData
+import kotlinx.android.synthetic.main.fragment_pizza.*
 
 class PizzaFragment : Fragment() {
 
 //    StoreClass 더미데이터를 담아줄 ArrayList를 작성
     val mPizzaList = ArrayList<StoreData>()
+
+//    ListView사용될 어댑터 클래스 lateinit var 로 생성
+    lateinit var mPizzaAdapter : StoreListViewAdapter
 
 //    layout(xml)과 class(kt) 엮어주는 함수
     override fun onCreateView(
@@ -32,6 +37,10 @@ class PizzaFragment : Fragment() {
         mPizzaList.add(StoreData("파파존스", 3.8))
         mPizzaList.add(StoreData("도미노피자", 4.5))
         mPizzaList.add(StoreData("미스터피자", 3.2))
+
+//        어댑터 객체화 및 ListView 변수와 연결
+        mPizzaAdapter = StoreListViewAdapter(requireContext(), R.layout.store_list_item, mPizzaList)
+        pizzaListView.adapter = mPizzaAdapter
 
     }
 
