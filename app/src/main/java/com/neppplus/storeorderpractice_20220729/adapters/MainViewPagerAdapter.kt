@@ -11,7 +11,7 @@ class MainViewPagerAdapter(
 ) : FragmentPagerAdapter(fm) {
 
 //    몇장짜리인가
-    override fun getCount() = 3 // 함수의 결과가 한줄로 도출된다면, 함수의 축약도 가능하다.
+    override fun getCount() = 2 // 함수의 결과가 한줄로 도출된다면, 함수의 축약도 가능하다.
 
 //    position 값에 따라 어떤 걸 return 해줄건지?
     override fun getItem(position: Int): Fragment {
