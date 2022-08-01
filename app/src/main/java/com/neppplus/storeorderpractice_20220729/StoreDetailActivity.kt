@@ -65,5 +65,11 @@ class StoreDetailActivity : AppCompatActivity() {
             val myIntent = Intent(Intent.ACTION_VIEW, myUri)
             startActivity(myIntent)
         }
+
+        logoImg.setOnClickListener {
+            val myIntent = Intent(this, DetailProfileImageActivity::class.java)
+            myIntent.putExtra("logoUrl", storeData.imgUrl)
+            startActivity(myIntent)
+        }
     }
 }
