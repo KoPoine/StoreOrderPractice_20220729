@@ -17,5 +17,8 @@ class MainActivity : AppCompatActivity() {
         mainViewPager.adapter = mPagerAdapter
         mainTabLayout.setupWithViewPager(mainViewPager)
 
+//        피자 리스트 중복 생성 막기 2
+        mainViewPager.offscreenPageLimit = 3 // 프래그먼트 3개는 반드시 생성을 시켜놓아라.
+
     }
 }
