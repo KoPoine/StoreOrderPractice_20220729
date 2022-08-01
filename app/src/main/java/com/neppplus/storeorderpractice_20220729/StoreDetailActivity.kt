@@ -58,5 +58,12 @@ class StoreDetailActivity : AppCompatActivity() {
                 .setPermissions(Manifest.permission.CALL_PHONE)  // 우리가 획득하고 싶은 권한
                 .check()
         }
+
+        goHomePageBtn.setOnClickListener {
+            // 각 상점별 홈페이지 방문 Event > StoreData에 Url이라는 새로운 String 생성자 추가
+            val myUri = Uri.parse("https://www.pizzahut.co.kr/")
+            val myIntent = Intent(Intent.ACTION_VIEW, myUri)
+            startActivity(myIntent)
+        }
     }
 }
