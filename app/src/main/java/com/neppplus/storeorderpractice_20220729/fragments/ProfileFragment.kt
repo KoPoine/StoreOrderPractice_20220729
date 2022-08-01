@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.neppplus.storeorderpractice_20220729.DetailProfileImageActivity
 import com.neppplus.storeorderpractice_20220729.ProfileActivity
 import com.neppplus.storeorderpractice_20220729.R
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -31,6 +32,11 @@ class ProfileFragment : Fragment() {
             val myIntent = Intent(requireContext(), ProfileActivity::class.java)
             startActivityForResult(myIntent, REQ_FOR_NICK)
         }
+
+        profileImg.setOnClickListener {
+            val myIntent = Intent(requireContext(), DetailProfileImageActivity::class.java)
+            startActivity(myIntent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -42,5 +48,4 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-
 }
