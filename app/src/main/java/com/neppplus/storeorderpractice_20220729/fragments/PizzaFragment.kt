@@ -34,6 +34,9 @@ class PizzaFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+//        데이터 중복 생성을 막는 방법(1)
+//        mPizzaList.clear()
+
 //        한칸의 리스트뷰에 사용될 더미데이터를 작성
         mPizzaList.add(StoreData("피자헛", 4.3,"1577-8080",
             "https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FnkQca%2FbtqwVT4rrZo%2FymhFqW9uRbzrmZTxUU1QC1%2Fimg.jpg"))
