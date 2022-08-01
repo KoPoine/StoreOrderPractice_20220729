@@ -54,4 +54,7 @@ dependencies {
 
 //    TedPermission
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+
+//    PhotoView
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }
